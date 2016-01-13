@@ -1,6 +1,3 @@
-import random
-
-
 def isNumber(num):
     try:
         int(num)
@@ -15,43 +12,29 @@ def getInput(row):
     return Row
 
 
+def fillRow(rowNum):
+    MClist = []
+    while True:
+        Row =  getInput(rowNum)
+        if isNumber(Row[0]) == True and isNumber(Row[1]) == True and isNumber(Row[2]) == True:
+            MClist.append(int(Row[0]))
+            MClist.append(int(Row[1]))
+            MClist.append(int(Row[2]))
+            break
+        else:
+            print "Input is not number, please re-enter"
+            continue
+    return MClist
+
+
 def mainGame():
     MClist1 =[]
     MClist2 =[]
     MClist3 =[]
 
-    while True:
-        Row1 =  getInput(1)
-        if isNumber(Row1[0]) == True and isNumber(Row1[1]) == True and isNumber(Row1[2]) == True:
-            MClist1.append(int(Row1[0]))
-            MClist1.append(int(Row1[1]))
-            MClist1.append(int(Row1[2]))
-            break
-        else:
-            print "Input is not number, please re-enter"
-            continue
-
-    while True:
-        Row2 =  getInput(2)
-        if isNumber(Row2[0]) == True and isNumber(Row2[1]) == True and isNumber(Row2[2]) == True:
-            MClist2.append(int(Row2[0]))
-            MClist2.append(int(Row2[1]))
-            MClist2.append(int(Row2[2]))
-            break
-        else:
-            print "Input is not number, please re-enter"
-            continue
-
-    while True:
-        Row3 =  getInput(3)
-        if isNumber(Row3[0]) == True and isNumber(Row3[1]) == True and isNumber(Row3[2]) == True:
-            MClist3.append(int(Row3[0]))
-            MClist3.append(int(Row3[1]))
-            MClist3.append(int(Row3[2]))
-            break
-        else:
-            print "Input is not number, please re-enter"
-            continue
+    MClist1 = fillRow(1)
+    MClist2 = fillRow(2)
+    MClist3 = fillRow(3)
 
     print MClist1
     print MClist2
@@ -69,12 +52,17 @@ def mainGame():
     dTotal2 = MClist1[2] + MClist2[1] + MClist3[0]
 
 
-
     if hTotal1 == hTotal2 == hTotal3 == vTotal1 == vTotal2 == vTotal3 == dTotal1 == dTotal1:
         print "Congratulations! You found a Magic Square!"
     else:
         print "Not a Magic Square, Try again!"
 
 
-mainGame()
+while True:
+    mainGame()
+    choice = raw_input("Would you like to play this again (Y/N) ? =>").upper()
+    if choice == "Y":
+        continue
+    else:
+        break
 
