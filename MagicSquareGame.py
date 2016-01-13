@@ -16,7 +16,10 @@ def fillRow(rowNum):
     MClist = []
     while True:
         Row =  getInput(rowNum)
-        if isNumber(Row[0]) == True and isNumber(Row[1]) == True and isNumber(Row[2]) == True:
+        if len(Row) != 3:
+            print "Please ensure you enter only 3 numbers!"
+            continue
+        if isNumber(Row[0]) and isNumber(Row[1]) and isNumber(Row[2]):
             MClist.append(int(Row[0]))
             MClist.append(int(Row[1]))
             MClist.append(int(Row[2]))
@@ -64,5 +67,6 @@ while True:
     if choice == "Y":
         continue
     else:
+        print "Thanks for playing!"
         break
 
